@@ -4,7 +4,6 @@ function init() {
     registerServiceWorker();
     createLocalForage();
     document.querySelectorAll('nav a').forEach(el => el.addEventListener('click', handleNavigation));
-    document.querySelector('#closebtn').addEventListener('click', closeNav);
     document.addEventListener('click', checkIfClickedAnything);
 }
 
@@ -21,10 +20,12 @@ function registerServiceWorker() {
 
 function openNav() {
     document.getElementById("sidenav").style.width = "50%";
+    changePageShadow();
 }
 
 function closeNav() {
     document.getElementById("sidenav").style.width = "0";
+    changePageShadow();
 }
 
 function checkIfClickedAnything(e) {
@@ -34,5 +35,14 @@ function checkIfClickedAnything(e) {
     }
     else if (e.target != nav && e.target.parentNode != nav){
         closeNav();
+    }
+}
+
+function changePageShadow() {
+    if (document.getElementById("sidenav").style.width === "50%") {
+        document.getElementById("sidenav").classList.add("page-shadow");
+    }
+    else {
+        document.getElementById("sidenav").classList.remove("page-shadow");
     }
 }

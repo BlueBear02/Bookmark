@@ -58,9 +58,13 @@ section h2 {
 .hidden {
     display: none;
 }
-.bookarea {
+.booklist {
     width: 80%;
     margin: auto;
+    border : #37006e solid 2px;
+    padding: 1em;
+    border-radius: 5px;
+    box-shadow: 1px 1px #37006e;
 }
 .button {
     position: fixed;
@@ -72,4 +76,7 @@ section h2 {
     border-color: #37006e;
     border-radius: 50%;
     font-size: 4em;
+}
+.page-shadow {
+    box-shadow:0 0 0 10000px rgba(0,0,0,.50);
 }
