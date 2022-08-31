@@ -66,16 +66,17 @@ section h2 {
     border-radius: 5px;
     box-shadow: 1px 1px #37006e;
 }
-.button {
-    position: fixed;
-    bottom: 1em;
-    right: 0.5em;
-    color: white;
-    padding: 0 0.2em;
+#add-button {
     background-color: indigo;
-    border-color: #37006e;
+    color: white;
     border-radius: 50%;
-    font-size: 4em;
+    position: fixed;
+    width: 12vh;
+    height: 12vh;
+    font-size: 11vh;
+    bottom: 0.7em;
+    right: 0.3em;
+    text-align: center;
 }
 .page-shadow {
     box-shadow:0 0 0 10000px rgba(0,0,0,.50);
