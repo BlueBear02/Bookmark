@@ -1,3 +1,6 @@
+body {
+    font-family: Verdana, sans-serif;
+}
 /*------HEADER------*/
 header {
     font-size: 2em;
@@ -6,10 +9,11 @@ header {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 0.2em;
+    padding: 0.2em 0;
 }
 span {
     font-size: 1.2em;
+    padding-left: 0.2em;
 }
 h1 {
     padding-top: 0.1em;
@@ -24,7 +28,7 @@ nav {
     left: 0;
     background-color: indigo;
     overflow-x: hidden;
-    transition: 0.5s;
+    transition: 0.2s;
 }
 nav li {
     font-size: 1em;
@@ -38,8 +42,34 @@ nav #closebtn {
     right: 0;
     font-size: 2em;
 }
+/*------MAIN------*/
+section {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+section h2 {
+    font-size: 1.5em;
+    padding: 0.5em;
+}
 
 /*------ID's and CLASSES------*/
 .hidden {
     display: none;
+}
+.bookarea {
+    width: 80%;
+    margin: auto;
+}
+.button {
+    position: fixed;
+    bottom: 1em;
+    right: 0.5em;
+    color: white;
+    padding: 0 0.2em;
+    background-color: indigo;
+    border-color: #37006e;
+    border-radius: 50%;
+    font-size: 4em;
 }
