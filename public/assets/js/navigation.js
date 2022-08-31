@@ -21,4 +21,5 @@ function handleNavigation(e) {
 function switchPage(previousPage,nextPage){
     document.querySelector('#' + previousPage).classList.toggle('hidden');
     document.querySelector('#' + nextPage).classList.toggle('hidden');
+    closeNav();
 }
