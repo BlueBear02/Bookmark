@@ -3,8 +3,9 @@ document.addEventListener("DOMContentLoaded", init);
 function init() {
     registerServiceWorker();
     document.querySelectorAll('nav a').forEach(el => el.addEventListener('click', handleNavigation));
-    document.querySelector('span').addEventListener('click', openNav);
+    //document.querySelector('span').addEventListener('click', openNav);
     document.querySelector('#closebtn').addEventListener('click', closeNav);
+    document.addEventListener('click', checkIfClickedAnything);
 }
 
 function registerServiceWorker() {
@@ -24,4 +25,14 @@ function openNav() {
 
 function closeNav() {
     document.getElementById("sidenav").style.width = "0";
+}
+
+function checkIfClickedAnything(e) {
+    let nav = document.getElementById("sidenav");
+    if (e.target.nodeName === "SPAN") {
+        openNav();
+    }
+    else if (e.target != nav && e.target.parentNode != nav){
+        closeNav();
+    }
 }
