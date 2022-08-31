@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", init);
 
 function init() {
     registerServiceWorker();
+    document.querySelectorAll('nav a').forEach(el => el.addEventListener('click', handleNavigation));
 }
 
 function registerServiceWorker() {

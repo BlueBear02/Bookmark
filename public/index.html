@@ -7,8 +7,29 @@
     <link rel="manifest" href="manifest.json">
     <title>Bookmark</title>
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/navigation.js"></script>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">
   </head>
   <body>
-    <p>Hello</p>
+    <header>
+      <nav>
+        <ul>
+          <li><a data-target="to-read">To read</a></li>
+          <li><a data-target="reading">Reading</a></li>
+          <li><a data-target="have-red">Have red</a></li>
+        </ul>
+      </nav>
+      <h1>Bookmark</h1>
+    </header>
+    <section id="to-read" class="hidden">
+      <p>to read</p>
+    </section>
+    <section id="reading" class="">
+      <p>reading</p>
+    </section>
+    <section id="have-red" class="hidden">
+      <p>have read</p>
+    </section>
   </body>
 </html>
