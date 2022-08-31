@@ -2,8 +2,8 @@ document.addEventListener("DOMContentLoaded", init);
 
 function init() {
     registerServiceWorker();
+    createLocalForage();
     document.querySelectorAll('nav a').forEach(el => el.addEventListener('click', handleNavigation));
-    //document.querySelector('span').addEventListener('click', openNav);
     document.querySelector('#closebtn').addEventListener('click', closeNav);
     document.addEventListener('click', checkIfClickedAnything);
 }
