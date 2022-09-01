@@ -113,3 +113,14 @@ form input, form select {
     color: red;
     font-size: 0.7em;
 }
+
+.bookclass {
+    border-bottom: indigo solid 2px;
+    display: flex;
+    justify-content: space-between;
+}
+.bookclass p {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}

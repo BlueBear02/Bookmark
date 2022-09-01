@@ -1,13 +1,10 @@
 document.addEventListener("DOMContentLoaded", init);
 
-let pastArray=[];
-let nowArray=[];
-let futureArray=[];
-
 function init() {
     registerServiceWorker();
     createLocalForage();
-    fillArrays();
+    fillLists();
+
     document.querySelectorAll('nav a').forEach(el => el.addEventListener('click', handleAddButton));
     document.querySelector('#add-button').addEventListener('click', handleAddButton);
     document.addEventListener('click', checkIfClickedAnything);
@@ -103,17 +100,38 @@ function clearForm() {
     document.querySelector("#list").value = "future";
 }
 
-function fillArrays() {
+function fillLists() {
     myOwnLibrary.keys().then(function(keys) {
         keys.forEach(book => myOwnLibrary.getItem(book).then(function(value) {
             if (value.list === "past") {
-                pastArray.push(value);
+                const insertBook =
+                    `<div class="bookclass">
+                    <div class="bookleft">
+                    <h3>${value.name}</h3>
+                    <p>${value.author}</p>
+                    </div>
+                    <p>${value.pages}</p></div>`;
+                document.querySelector("#have-red .booklist").insertAdjacentHTML('beforeend', insertBook);
             }
             if (value.list === "now") {
-                nowArray.push(value);
+                const insertBook =
+                    `<div class="bookclass">
+                    <div class="bookleft">
+                    <h3>${value.name}</h3>
+                    <p>${value.author}</p>
+                    </div>
+                    <p>${value.pages}</p></div>`;
+                document.querySelector("#reading .booklist").insertAdjacentHTML('beforeend', insertBook);
             }
             if (value.list === "future") {
-                futureArray.push(value);
+                const insertBook =
+                    `<div class="bookclass">
+                    <div>
+                    <h3>${value.name}</h3>
+                    <p>${value.author}</p>
+                    </div>
+                    <p>${value.pages}</p></div>`;
+                document.querySelector("#to-read .booklist").insertAdjacentHTML('beforeend', insertBook);
             }
         }).catch(function(err) {
             console.log(err);
