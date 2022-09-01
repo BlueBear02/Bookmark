@@ -106,4 +106,10 @@ form input, form select {
     color: white;
     padding: 0.2em;
     margin-top: 0.5em;
+    border-radius: 5px;
+}
+
+#forgotname {
+    color: red;
+    font-size: 0.7em;
 }

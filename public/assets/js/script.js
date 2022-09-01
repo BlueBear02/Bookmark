@@ -6,6 +6,7 @@ function init() {
     document.querySelectorAll('nav a').forEach(el => el.addEventListener('click', handleAddButton));
     document.querySelector('#add-button').addEventListener('click', handleAddButton);
     document.addEventListener('click', checkIfClickedAnything);
+    document.querySelector('#confirmbook').addEventListener('click', addBook);
 }
 
 function registerServiceWorker() {
@@ -57,4 +58,42 @@ function handleAddButton(e) {
         document.querySelector('#add-button').classList.add('hidden');
         handleNavigation(e);
     }
+}
+
+function addBook() {
+    if (checkRequired()) {
+        getBookValues();
+    }
+    else {
+        document.querySelector("#forgotname").innerHTML = "please fill in this field!";
+    }
+}
+
+function checkRequired() {
+    if (document.querySelector("#name").value !== "") {
+        return true
+    }
+    else {
+        return false
+    }
+}
+
+function getBookValues() {
+    let name = document.querySelector("#name").value;
+    let author = document.querySelector("#author").value;
+    let series = document.querySelector("#series").value;
+    let pages = document.querySelector("#pages").value;
+    let cpage = document.querySelector("#currentpages").value;
+    let list = document.querySelector("#list").value;
+    setBookInIndexedDB(makeBook(name, author, series, pages, cpage, list));
+    clearForm();
+}
+
+function clearForm() {
+    document.querySelector("#name").value = "";
+    document.querySelector("#author").value = "";
+    document.querySelector("#series").value = "";
+    document.querySelector("#pages").value = "";
+    document.querySelector("#currentpages").value = "";
+    document.querySelector("#list").value = "future";
 }
