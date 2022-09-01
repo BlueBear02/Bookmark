@@ -1,8 +1,13 @@
 document.addEventListener("DOMContentLoaded", init);
 
+let pastArray=[];
+let nowArray=[];
+let futureArray=[];
+
 function init() {
     registerServiceWorker();
     createLocalForage();
+    fillArrays();
     document.querySelectorAll('nav a').forEach(el => el.addEventListener('click', handleAddButton));
     document.querySelector('#add-button').addEventListener('click', handleAddButton);
     document.addEventListener('click', checkIfClickedAnything);
@@ -96,4 +101,24 @@ function clearForm() {
     document.querySelector("#pages").value = "";
     document.querySelector("#currentpages").value = "";
     document.querySelector("#list").value = "future";
+}
+
+function fillArrays() {
+    myOwnLibrary.keys().then(function(keys) {
+        keys.forEach(book => myOwnLibrary.getItem(book).then(function(value) {
+            if (value.list === "past") {
+                pastArray.push(value);
+            }
+            if (value.list === "now") {
+                nowArray.push(value);
+            }
+            if (value.list === "future") {
+                futureArray.push(value);
+            }
+        }).catch(function(err) {
+            console.log(err);
+        }))
+    }).catch(function(err) {
+        console.log(err);
+    });
 }
