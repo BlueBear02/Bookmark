@@ -30,16 +30,47 @@
     </header>
     <section id="to-read" class="hidden">
       <h2>To read</h2>
-      <div class="booklist"></div>
+      <div class="booklist border-gradient-purple"></div>
     </section>
     <section id="reading" class="">
       <h2>Reading</h2>
-      <div class="booklist"></div>
+      <div class="booklist border-gradient-purple"></div>
     </section>
     <section id="have-red" class="hidden">
       <h2>Have read</h2>
-      <div class="booklist"></div>
+      <div class="booklist border-gradient-purple"></div>
     </section>
-    <div id="add-button">+</div>
+    <section id="make-book" class="hidden">
+      <h2>Add a book</h2>
+      <div class="booklist border-gradient-purple">
+        <form>
+          <p id="required-text">* = required field</p>
+          <label for="name">*Name:</label>
+          <input type="text" name="name" id="name" placeholder="Philosopher's Stone"/>
+
+          <label for="author">Author:</label>
+          <input type="text" name="author" id="author" placeholder="J. K. Rowling"/>
+
+          <label for="series">Series:</label>
+          <input type="text" name="series" id="series" placeholder="Harry Potter"/>
+
+          <label for="pages">Pages:</label>
+          <input type="number" name="pages" id="pages" placeholder="223"/>
+
+          <label for="currentpages">Current page:</label>
+          <input type="number" name="currentpages" id="currentpages" placeholder="0"/>
+
+          <label for="list">*List:</label>
+          <select name="list" id="list">
+            <option value="future">Want to read</option>
+            <option value="now">Am reading</option>
+            <option value="past">Will read</option>
+          </select>
+
+          <div id="confirmbook">Add</div>
+        </form>
+      </div>
+    </section>
+    <div id="add-button" data-target="make-book">+</div>
   </body>
 </html>

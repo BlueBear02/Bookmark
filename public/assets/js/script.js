@@ -3,7 +3,8 @@ document.addEventListener("DOMContentLoaded", init);
 function init() {
     registerServiceWorker();
     createLocalForage();
-    document.querySelectorAll('nav a').forEach(el => el.addEventListener('click', handleNavigation));
+    document.querySelectorAll('nav a').forEach(el => el.addEventListener('click', handleAddButton));
+    document.querySelector('#add-button').addEventListener('click', handleAddButton);
     document.addEventListener('click', checkIfClickedAnything);
 }
 
@@ -44,5 +45,16 @@ function changePageShadow() {
     }
     else {
         document.getElementById("sidenav").classList.remove("page-shadow");
+    }
+}
+
+function handleAddButton(e) {
+    if (e.target.getAttribute("data-target") !== "make-book") {
+        document.querySelector('#add-button').classList.remove('hidden');
+        handleNavigation(e);
+    }
+    else {
+        document.querySelector('#add-button').classList.add('hidden');
+        handleNavigation(e);
     }
 }
