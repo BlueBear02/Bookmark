@@ -26,6 +26,10 @@ function setBookInIndexedDB(book) {
 }
 
 function updateInIndexedDB(oldtitle, book) {
-    myOwnLibrary.removeItem(oldtitle)
+    deleteBook(oldtitle)
     myOwnLibrary.setItem(book.name, book);
+}
+
+function deleteInIndexedDB(book) {
+    myOwnLibrary.removeItem(book);
 }

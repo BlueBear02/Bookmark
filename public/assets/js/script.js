@@ -11,6 +11,7 @@ function init() {
     document.querySelector('#add-button').addEventListener('click', handleAddButton);
     document.addEventListener('click', checkIfClickedAnything);
     document.querySelector('#confirmbook').addEventListener('click', addBook);
+    document.querySelector('#deletebook').addEventListener('click', deleteBook);
 }
 
 function registerServiceWorker() {
@@ -167,7 +168,6 @@ function editBook(e) {
 }
 
 function updateDB() {
-    console.log("in updatedb");
     if (checkRequiredUpdate()) {
         getUpdateBookValues();
     }
@@ -177,7 +177,6 @@ function updateDB() {
 }
 
 function getUpdateBookValues() {
-    console.log("in getUpdateBookValues");
     let name = document.querySelector("#ename").value;
     let author = document.querySelector("#eauthor").value;
     let series = document.querySelector("#eseries").value;
@@ -204,4 +203,9 @@ function fillForm(book) {
     document.querySelector("#epages").value = book.pages;
     document.querySelector("#ecurrentpages").value = book.currentPage;
     document.querySelector("#elist").value = book.list;
+}
+
+function deleteBook() {
+    deleteInIndexedDB(title);
+    clearForm();
 }
