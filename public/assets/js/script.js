@@ -67,7 +67,7 @@ function addBook() {
         getBookValues();
     }
     else {
-        document.querySelector("#forgotname").innerHTML = "please fill in this field!";
+        document.querySelector("#forgotname-add").innerHTML = "please fill in this field!";
     }
 }
 
@@ -98,6 +98,7 @@ function clearForm() {
     document.querySelector("#pages").value = "";
     document.querySelector("#currentpages").value = "";
     document.querySelector("#list").value = "future";
+    document.querySelector("#forgotname-edit, #forgotname-add").innerHTML = "";
     location.reload();
 }
 
@@ -140,7 +141,9 @@ function fillLists() {
     }).catch(function(err) {
         console.log(err);
     });
-    document.querySelectorAll(".booklist").forEach(el => el.addEventListener("click", editBook));
+    document.querySelectorAll("#reading .booklist").forEach(el => el.addEventListener("click", editBook));
+    document.querySelectorAll("#have-red .booklist").forEach(el => el.addEventListener("click", editBook));
+    document.querySelectorAll("#to-read .booklist").forEach(el => el.addEventListener("click", editBook));
 }
 
 function checkForPages(book) {
@@ -155,6 +158,47 @@ function checkForPages(book) {
 function editBook(e) {
     const title = e.target.closest("div").querySelector("h3").innerHTML;
     myOwnLibrary.getItem(title, function(err, value) {
-        console.log(value);
+        directNavigation("edit-book");
+        fillForm(value);
     });
+    document.querySelector("#updatebook").addEventListener("click", updateDB(title));
+}
+
+function updateDB(title) {
+    console.log(title);
+    if (checkRequiredUpdate()) {
+        getUpdateBookValues(title);
+    }
+    else {
+        document.querySelectorAll("#forgotname-edit").innerHTML = "please fill in this field!";
+    }
+}
+
+function getUpdateBookValues(title) {
+    let name = document.querySelector("#ename").value;
+    let author = document.querySelector("#eauthor").value;
+    let series = document.querySelector("#eseries").value;
+    let pages = document.querySelector("#epages").value;
+    let cpage = document.querySelector("#ecurrentpages").value;
+    let list = document.querySelector("#elist").value;
+    updateInIndexedDB(title, makeBook(name, author, series, pages, cpage, list));
+    clearForm();
+}
+
+function checkRequiredUpdate() {
+    if (document.querySelector("#ename").value !== "") {
+        return true
+    }
+    else {
+        return false
+    }
+}
+
+function fillForm(book) {
+    document.querySelector("#ename").value = book.name;
+    document.querySelector("#eauthor").value = book.author;
+    document.querySelector("#eseries").value = book.series;
+    document.querySelector("#epages").value = book.pages;
+    document.querySelector("#ecurrentpages").value = book.currentPage;
+    document.querySelector("#elist").value = book.list;
 }

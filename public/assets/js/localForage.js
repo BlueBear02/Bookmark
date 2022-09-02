@@ -24,3 +24,8 @@ function makeBook(name, author, series, pages, currentPage, list) {
 function setBookInIndexedDB(book) {
     myOwnLibrary.setItem(book.name, book);
 }
+
+function updateInIndexedDB(oldtitle, book) {
+    myOwnLibrary.removeItem(oldtitle)
+    myOwnLibrary.setItem(book.name, book);
+}

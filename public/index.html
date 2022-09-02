@@ -44,9 +44,9 @@
       <h2>Add a book</h2>
       <div class="booklist border-gradient-purple">
         <form>
-          <p id="required-text">* = required field</p>
+          <p class="required-text">* = required field</p>
           <label for="name">*Name:</label>
-          <p class="forgotname"></p>
+          <p id="forgotname-add"></p>
           <input type="text" name="name" id="name" placeholder="Philosopher's Stone"/>
 
           <label for="author">Author:</label>
@@ -78,20 +78,20 @@
         <form>
           <p class="required-text">* = required field</p>
           <label for="ename">*Name:</label>
-          <p id="forgotname"></p>
-          <input type="text" name="ename" id="ename" placeholder="Philosopher's Stone"/>
+          <p id="forgotname-edit"></p>
+          <input type="text" name="ename" id="ename"/>
 
           <label for="eauthor">Author:</label>
-          <input type="text" name="eauthor" id="eauthor" placeholder="J. K. Rowling"/>
+          <input type="text" name="eauthor" id="eauthor"/>
 
           <label for="eseries">Series:</label>
-          <input type="text" name="eseries" id="eseries" placeholder="Harry Potter"/>
+          <input type="text" name="eseries" id="eseries"/>
 
           <label for="epages">Pages:</label>
-          <input type="number" name="epages" id="epages" placeholder="223"/>
+          <input type="number" name="epages" id="epages"/>
 
           <label for="ecurrentpages">Current page:</label>
-          <input type="number" name="ecurrentpages" id="ecurrentpages" placeholder="0"/>
+          <input type="number" name="ecurrentpages" id="ecurrentpages"/>
 
           <label for="elist">List:</label>
           <select name="elist" id="elist">

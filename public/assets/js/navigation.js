@@ -13,10 +13,10 @@ function handleNavigation(e) {
     }
 }
 
-/*function directNavigation(targetPage) {
+function directNavigation(targetPage) {
     switchPage(currentPage, targetPage);
     currentPage = targetPage;
-}*/
+}
 
 function switchPage(previousPage,nextPage){
     document.querySelector('#' + previousPage).classList.toggle('hidden');
