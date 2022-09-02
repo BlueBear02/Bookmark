@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", init);
 
+let title = "";
+
 function init() {
     registerServiceWorker();
     createLocalForage();
@@ -156,25 +158,26 @@ function checkForPages(book) {
 }
 
 function editBook(e) {
-    const title = e.target.closest("div").querySelector("h3").innerHTML;
+    title = e.target.closest("div").querySelector("h3").innerHTML;
     myOwnLibrary.getItem(title, function(err, value) {
         directNavigation("edit-book");
         fillForm(value);
     });
-    document.querySelector("#updatebook").addEventListener("click", updateDB(title));
+    document.querySelector('#updatebook').addEventListener('click', updateDB);
 }
 
-function updateDB(title) {
-    console.log(title);
+function updateDB() {
+    console.log("in updatedb");
     if (checkRequiredUpdate()) {
-        getUpdateBookValues(title);
+        getUpdateBookValues();
     }
     else {
         document.querySelectorAll("#forgotname-edit").innerHTML = "please fill in this field!";
     }
 }
 
-function getUpdateBookValues(title) {
+function getUpdateBookValues() {
+    console.log("in getUpdateBookValues");
     let name = document.querySelector("#ename").value;
     let author = document.querySelector("#eauthor").value;
     let series = document.querySelector("#eseries").value;
