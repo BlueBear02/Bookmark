@@ -74,21 +74,19 @@ form input, form select {
     border-image-slice: 1;
     padding: 1em;
     box-shadow: 1px 1px #37006e;
+    max-height: 75vh;
+    overflow-y: scroll;
 }
 .border-gradient-purple {
     border-image-source: linear-gradient(to left, #743ad5, #d53a9d);
 }
 #add-button {
-    background-color: indigo;
-    color: white;
-    border-radius: 50%;
     position: fixed;
-    width: 12vh;
-    height: 12vh;
-    font-size: 11vh;
     bottom: 0.7em;
     right: 0.3em;
-    text-align: center;
+}
+#add-button img{
+    width: 10vh;
 }
 .page-shadow {
     box-shadow:0 0 0 10000px rgba(0,0,0,.50);
@@ -109,7 +107,7 @@ form input, form select {
     border-radius: 5px;
 }
 
-#forgotname {
+.forgotname {
     color: red;
     font-size: 0.7em;
 }

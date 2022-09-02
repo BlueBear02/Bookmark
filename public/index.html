@@ -46,7 +46,7 @@
         <form>
           <p id="required-text">* = required field</p>
           <label for="name">*Name:</label>
-          <p id="forgotname"></p>
+          <p class="forgotname"></p>
           <input type="text" name="name" id="name" placeholder="Philosopher's Stone"/>
 
           <label for="author">Author:</label>
@@ -72,6 +72,38 @@
         </form>
       </div>
     </section>
-    <div id="add-button" data-target="make-book">+</div>
+    <section id="edit-book" class="hidden">
+      <h2>Edit a book</h2>
+      <div class="booklist border-gradient-purple">
+        <form>
+          <p class="required-text">* = required field</p>
+          <label for="ename">*Name:</label>
+          <p id="forgotname"></p>
+          <input type="text" name="ename" id="ename" placeholder="Philosopher's Stone"/>
+
+          <label for="eauthor">Author:</label>
+          <input type="text" name="eauthor" id="eauthor" placeholder="J. K. Rowling"/>
+
+          <label for="eseries">Series:</label>
+          <input type="text" name="eseries" id="eseries" placeholder="Harry Potter"/>
+
+          <label for="epages">Pages:</label>
+          <input type="number" name="epages" id="epages" placeholder="223"/>
+
+          <label for="ecurrentpages">Current page:</label>
+          <input type="number" name="ecurrentpages" id="ecurrentpages" placeholder="0"/>
+
+          <label for="elist">List:</label>
+          <select name="elist" id="elist">
+            <option value="future">Want to read</option>
+            <option value="now">Am reading</option>
+            <option value="past">Have read</option>
+          </select>
+
+          <div id="updatebook">Update</div>
+        </form>
+      </div>
+    </section>
+    <div id="add-button"><img src="assets/images/plus-sign-button.svg" alt="addbutton" data-target="make-book"></div>
   </body>
 </html>

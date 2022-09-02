@@ -98,10 +98,7 @@ function clearForm() {
     document.querySelector("#pages").value = "";
     document.querySelector("#currentpages").value = "";
     document.querySelector("#list").value = "future";
-    document.querySelector("#reading .booklist").innerHTML = "";
-    document.querySelector("#to-read .booklist").innerHTML = "";
-    document.querySelector("#have-red .booklist").innerHTML = "";
-    fillLists();
+    location.reload();
 }
 
 function fillLists() {
@@ -143,6 +140,7 @@ function fillLists() {
     }).catch(function(err) {
         console.log(err);
     });
+    document.querySelectorAll(".booklist").forEach(el => el.addEventListener("click", editBook));
 }
 
 function checkForPages(book) {
@@ -152,4 +150,11 @@ function checkForPages(book) {
     else {
         return `<p>${book.pages}</p>`
     }
+}
+
+function editBook(e) {
+    const title = e.target.closest("div").querySelector("h3").innerHTML;
+    myOwnLibrary.getItem(title, function(err, value) {
+        console.log(value);
+    });
 }
