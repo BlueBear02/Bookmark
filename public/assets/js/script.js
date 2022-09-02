@@ -183,7 +183,11 @@ function getUpdateBookValues() {
     let pages = document.querySelector("#epages").value;
     let cpage = document.querySelector("#ecurrentpages").value;
     let list = document.querySelector("#elist").value;
-    updateInIndexedDB(title, makeBook(name, author, series, pages, cpage, list));
+    if (cpage === pages || cpage >= pages) {
+        updateInIndexedDB(title, makeBook(name, author, series, pages, cpage, "past"));
+    }else {
+        updateInIndexedDB(title, makeBook(name, author, series, pages, cpage, list));
+    }
     clearForm();
 }
 
