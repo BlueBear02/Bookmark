@@ -98,6 +98,10 @@ function clearForm() {
     document.querySelector("#pages").value = "";
     document.querySelector("#currentpages").value = "";
     document.querySelector("#list").value = "future";
+    document.querySelector("#reading .booklist").innerHTML = "";
+    document.querySelector("#to-read .booklist").innerHTML = "";
+    document.querySelector("#have-red .booklist").innerHTML = "";
+    fillLists();
 }
 
 function fillLists() {
@@ -106,9 +110,9 @@ function fillLists() {
             if (value.list === "past") {
                 const insertBook =
                     `<div class="bookclass">
-                    <div class="bookleft">
+                    <div>
                     <h3>${value.name}</h3>
-                    <p>${value.author}</p>
+                    <p class="bookauthor">${value.author}</p>
                     </div>
                     <p>${value.pages}</p></div>`;
                 document.querySelector("#have-red .booklist").insertAdjacentHTML('beforeend', insertBook);
@@ -116,11 +120,11 @@ function fillLists() {
             if (value.list === "now") {
                 const insertBook =
                     `<div class="bookclass">
-                    <div class="bookleft">
+                    <div>
                     <h3>${value.name}</h3>
-                    <p>${value.author}</p>
+                    <p class="bookauthor">${value.author}</p>
                     </div>
-                    <p>${value.pages}</p></div>`;
+                    ${checkForPages(value)}</div>`;
                 document.querySelector("#reading .booklist").insertAdjacentHTML('beforeend', insertBook);
             }
             if (value.list === "future") {
@@ -128,7 +132,7 @@ function fillLists() {
                     `<div class="bookclass">
                     <div>
                     <h3>${value.name}</h3>
-                    <p>${value.author}</p>
+                    <p class="bookauthor">${value.author}</p>
                     </div>
                     <p>${value.pages}</p></div>`;
                 document.querySelector("#to-read .booklist").insertAdjacentHTML('beforeend', insertBook);
@@ -139,4 +143,13 @@ function fillLists() {
     }).catch(function(err) {
         console.log(err);
     });
+}
+
+function checkForPages(book) {
+    if (book.currentPage !== "") {
+        return `<p>${book.currentPage}/${book.pages}</p>`
+    }
+    else {
+        return `<p>${book.pages}</p>`
+    }
 }

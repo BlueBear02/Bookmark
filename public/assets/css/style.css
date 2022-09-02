@@ -118,9 +118,19 @@ form input, form select {
     border-bottom: indigo solid 2px;
     display: flex;
     justify-content: space-between;
+    padding-bottom: 1vh;
+    margin-bottom: 0.5em;
+}
+.bookclass h3 {
+    font-size: 1.5em;
+    text-align: left;
 }
 .bookclass p {
     display: flex;
     flex-direction: column;
     text-align: left;
+}
+.bookauthor {
+    color: lightgray;
+    font-size: 2vh;
 }
