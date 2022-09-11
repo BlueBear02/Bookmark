@@ -26,3 +26,5 @@ K
 public/assets/css/style.css,7\1\71099636a70dab049c017c02bc65e7017dc77aef
 J
 public/assets/js/script.js,a\0\a0ca7d890b2d40e7866728688fd979675d3355ba
+Y
+)public/assets/images/plus-sign-button.svg,3\1\31a011eaf9804cb32b2d9c7db8e43bf71358cdf1
