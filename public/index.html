@@ -11,6 +11,7 @@
     <script src="assets/js/navigation.js"></script>
     <script src="assets/js/localForage.js"></script>
     <script src="assets/js/localforage.min.js"></script>
+    <script src="assets/js/form.js"></script>
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
   </head>
@@ -40,72 +41,8 @@
       <h2>Have read</h2>
       <div class="booklist border-gradient-purple"></div>
     </section>
-    <section id="make-book" class="hidden">
-      <h2>Add a book</h2>
-      <div class="booklist border-gradient-purple">
-        <form>
-          <p class="required-text">* = required field</p>
-          <label for="name">*Name:</label>
-          <p id="forgotname-add"></p>
-          <input type="text" name="name" id="name" placeholder="Philosopher's Stone"/>
-
-          <label for="author">Author:</label>
-          <input type="text" name="author" id="author" placeholder="J. K. Rowling"/>
-
-          <label for="series">Series:</label>
-          <input type="text" name="series" id="series" placeholder="Harry Potter"/>
-
-          <label for="pages">Pages:</label>
-          <input type="number" name="pages" id="pages" placeholder="223"/>
-
-          <label for="currentpages">Current page:</label>
-          <input type="number" name="currentpages" id="currentpages" placeholder="0"/>
-
-          <label for="list">List:</label>
-          <select name="list" id="list">
-            <option value="future">Want to read</option>
-            <option value="now">Am reading</option>
-            <option value="past">Have read</option>
-          </select>
-
-          <div id="confirmbook">Add</div>
-        </form>
-      </div>
+    <section id="form-section" class="hidden">
     </section>
-    <section id="edit-book" class="hidden">
-      <h2>Edit a book</h2>
-      <div class="booklist border-gradient-purple">
-        <form>
-          <p class="required-text">* = required field</p>
-          <label for="ename">*Name:</label>
-          <p id="forgotname-edit"></p>
-          <input type="text" name="ename" id="ename"/>
-
-          <label for="eauthor">Author:</label>
-          <input type="text" name="eauthor" id="eauthor"/>
-
-          <label for="eseries">Series:</label>
-          <input type="text" name="eseries" id="eseries"/>
-
-          <label for="epages">Pages:</label>
-          <input type="number" name="epages" id="epages"/>
-
-          <label for="ecurrentpages">Current page:</label>
-          <input type="number" name="ecurrentpages" id="ecurrentpages"/>
-
-          <label for="elist">List:</label>
-          <select name="elist" id="elist">
-            <option value="future">Want to read</option>
-            <option value="now">Am reading</option>
-            <option value="past">Have read</option>
-          </select>
-
-          <div id="updatebook">Update</div>
-
-          <div id="deletebook">Delete book</div>
-        </form>
-      </div>
-    </section>
-    <div id="add-button"><img src="assets/images/plus-sign-button.svg" alt="addbutton" data-target="make-book"></div>
+    <div id="add-button"><img src="assets/images/plus-sign-button.svg" alt="addbutton" data-target="add-form"></div>
   </body>
 </html>
