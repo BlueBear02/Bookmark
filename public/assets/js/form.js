@@ -124,7 +124,7 @@ function addBook() {
 }
 
 function updateBook() {
-    if (cpage === pages || cpage >= pages) {
+    if (cpage === pages) {
         updateInIndexedDB(title, makeBook(name, author, series, pages, cpage, "past"));
     }else {
         updateInIndexedDB(title, makeBook(name, author, series, pages, cpage, list));
