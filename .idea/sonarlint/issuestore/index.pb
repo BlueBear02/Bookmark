@@ -28,3 +28,7 @@ J
 public/assets/js/script.js,a\0\a0ca7d890b2d40e7866728688fd979675d3355ba
 Y
 )public/assets/images/plus-sign-button.svg,3\1\31a011eaf9804cb32b2d9c7db8e43bf71358cdf1
+H
+public/assets/js/form.js,6\3\6330b357164930f835f32494877c7f69d6eee726
+K
+public/assets/css/reset.css,7\c\7c89e5ff86c1a2aeac1012b533bc9c20222e6e86
