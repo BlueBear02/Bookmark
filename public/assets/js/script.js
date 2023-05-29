@@ -22,48 +22,50 @@ function registerServiceWorker() {
 }
 
 function fillLists() {
-    myOwnLibrary.keys().then(function(keys) {
-        keys.forEach(book => myOwnLibrary.getItem(book).then(function(value) {
-            if (value.list === "past") {
-                const insertBook =
-                    `<div class="bookclass">
-                    <div>
-                    <h3>${value.name}</h3>
-                    <p class="bookauthor">${value.author}</p>
-                    </div>
-                    <p>${value.pages}</p></div>`;
-                document.querySelector("#have-red .booklist").insertAdjacentHTML('beforeend', insertBook);
-            }
-            if (value.list === "now") {
-                const insertBook =
-                    `<div class="bookclass">
+    myOwnLibrary.keys()
+        .then(function(keys) {
+            return Promise.all(keys.map(book => myOwnLibrary.getItem(book)));
+        })
+        .then(function(books) {
+            // Sort the books by author
+            books.sort(function(a, b) {
+                if (a.author < b.author) {
+                    return -1;
+                }
+                if (a.author > b.author) {
+                    return 1;
+                }
+                return 0;
+            });
+
+            // Display the sorted books
+            books.forEach(function(value) {
+                const insertBook = `<div class="bookclass">
                     <div>
                     <h3>${value.name}</h3>
                     <p class="bookauthor">${value.author}</p>
                     </div>
                     ${checkForPages(value)}</div>`;
-                document.querySelector("#reading .booklist").insertAdjacentHTML('beforeend', insertBook);
-            }
-            if (value.list === "future") {
-                const insertBook =
-                    `<div class="bookclass">
-                    <div>
-                    <h3>${value.name}</h3>
-                    <p class="bookauthor">${value.author}</p>
-                    </div>
-                    <p>${value.pages}</p></div>`;
-                document.querySelector("#to-read .booklist").insertAdjacentHTML('beforeend', insertBook);
-            }
-        }).catch(function(err) {
+
+                if (value.list === "past") {
+                    document.querySelector("#have-red .booklist").insertAdjacentHTML('beforeend', insertBook);
+                } else if (value.list === "now") {
+                    document.querySelector("#reading .booklist").insertAdjacentHTML('beforeend', insertBook);
+                } else if (value.list === "future") {
+                    document.querySelector("#to-read .booklist").insertAdjacentHTML('beforeend', insertBook);
+                }
+            });
+
+            // Add event listeners
+            document.querySelectorAll("#reading .booklist").forEach(el => el.addEventListener("click", openForm));
+            document.querySelectorAll("#have-red .booklist").forEach(el => el.addEventListener("click", openForm));
+            document.querySelectorAll("#to-read .booklist").forEach(el => el.addEventListener("click", openForm));
+        })
+        .catch(function(err) {
             console.log(err);
-        }))
-    }).catch(function(err) {
-        console.log(err);
-    });
-    document.querySelectorAll("#reading .booklist").forEach(el => el.addEventListener("click", openForm));
-    document.querySelectorAll("#have-red .booklist").forEach(el => el.addEventListener("click", openForm));
-    document.querySelectorAll("#to-read .booklist").forEach(el => el.addEventListener("click", openForm));
+        });
 }
+
 
 function checkForPages(book) {
     if (book.currentPage !== "") {
