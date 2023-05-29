@@ -1,8 +1,8 @@
 {
     "name": "Bookmark",
     "short_name": "BM",
-    "theme_color": "#4B0082",
-    "background_color": "#aa87db",
+    "theme_color": "#000000",
+    "background_color": "#000000",
     "display": "standalone",
     "scope": "/",
     "start_url": "/",

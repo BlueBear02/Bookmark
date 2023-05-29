@@ -1,16 +1,21 @@
 body {
     /*font-family: Verdana, sans-serif;*/
     font-family: 'Source Sans Pro', sans-serif;
+    background: linear-gradient(0deg, rgb(75, 0, 130) -100%, rgb(40, 40, 40) 100%);
+    color: white;
+    min-height: 100vh
 }
 /*------HEADER------*/
 header {
     font-size: 2em;
-    background-color: indigo;
+    background: linear-gradient(0deg, rgba(10,10,10,1) 0%, rgb(40, 40, 40) 100%);
+    border-bottom: indigo 0.5vh solid;
     color: white;
     width: 100%;
     display: flex;
     justify-content: space-between;
     padding: 0.2em 0;
+    box-shadow: 0 0 20px rgba(63, 0, 255, 0.5);
 }
 span {
     font-size: 1.2em;
@@ -77,9 +82,12 @@ form input, form select {
     box-shadow: 1px 1px #37006e;
     max-height: 75vh;
     overflow-y: scroll;
+    background: linear-gradient(45deg, rgba(40,40,40,1) 0%, rgb(70, 70, 70) 100%);
+    color: white;
 }
 .border-gradient-purple {
-    border-image-source: linear-gradient(to left, #743ad5, #d53a9d);
+    border: 3px solid indigo;
+    border-radius: 12px;
 }
 #add-button {
     position: fixed;
