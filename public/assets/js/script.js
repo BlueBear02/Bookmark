@@ -27,34 +27,8 @@ function fillLists() {
             return Promise.all(keys.map(book => myOwnLibrary.getItem(book)));
         })
         .then(function(books) {
-            // Sort the books by author
-            books.sort(function(a, b) {
-                if (a.author < b.author) {
-                    return -1;
-                }
-                if (a.author > b.author) {
-                    return 1;
-                }
-                return 0;
-            });
-
-            // Display the sorted books
-            books.forEach(function(value) {
-                const insertBook = `<div class="bookclass">
-                    <div>
-                    <h3>${value.name}</h3>
-                    <p class="bookauthor">${value.author}</p>
-                    </div>
-                    ${checkForPages(value)}</div>`;
-
-                if (value.list === "past") {
-                    document.querySelector("#have-red .booklist").insertAdjacentHTML('beforeend', insertBook);
-                } else if (value.list === "now") {
-                    document.querySelector("#reading .booklist").insertAdjacentHTML('beforeend', insertBook);
-                } else if (value.list === "future") {
-                    document.querySelector("#to-read .booklist").insertAdjacentHTML('beforeend', insertBook);
-                }
-            });
+            sortBooks(books);
+            displayBooks(books);
 
             // Add event listeners
             document.querySelectorAll("#reading .booklist").forEach(el => el.addEventListener("click", openForm));
@@ -66,13 +40,52 @@ function fillLists() {
         });
 }
 
+function sortBooks(books) {
+    // Sort the books by author and series
+    books.sort(function (a, b) {
+        // First, compare the authors
+        if (a.author < b.author) {
+            return -1;
+        }
+        if (a.author > b.author) {
+            return 1;
+        }
+        // If authors are the same, compare the series
+        if (a.series < b.series) {
+            return -1;
+        }
+        if (a.series > b.series) {
+            return 1;
+        }
+        return 0;
+    });
+}
+
+function displayBooks(books) {
+    // Display the sorted books
+    books.forEach(function(value) {
+        const insertBook = `<div class="bookclass">
+                    <div>
+                    <h3>${value.name}</h3>
+                    <p class="bookauthor">${value.author}</p>
+                    </div>
+                    ${checkForPages(value)}</div>`;
+
+        if (value.list === "past") {
+            document.querySelector("#have-red .booklist").insertAdjacentHTML('beforeend', insertBook);
+        } else if (value.list === "now") {
+            document.querySelector("#reading .booklist").insertAdjacentHTML('beforeend', insertBook);
+        } else if (value.list === "future") {
+            document.querySelector("#to-read .booklist").insertAdjacentHTML('beforeend', insertBook);
+        }
+    });
+}
 
 function checkForPages(book) {
-    if (book.currentPage !== "") {
-        return `<p>${book.currentPage}/${book.pages}</p>`
-    }
-    else {
-        return `<p>${book.pages}</p>`
+    if (book.list === "now") {
+        return `<p>${book.currentPage}/${book.pages}</p>`;
+    } else {
+        return `<p>${book.pages}</p>`;
     }
 }
 
