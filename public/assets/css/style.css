@@ -1,6 +1,6 @@
 body {
-    /*font-family: Verdana, sans-serif;*/
-    font-family: 'Source Sans Pro', sans-serif;
+    /*font-family: 'Source Sans Pro', sans-serif;*/
+    font-family: 'Ubuntu', sans-serif;
     background: linear-gradient(0deg, rgb(75, 0, 130) -100%, rgb(40, 40, 40) 100%);
     color: white;
     min-height: 100vh
@@ -95,7 +95,7 @@ form input, form select {
     right: 0.3em;
 }
 #add-button img{
-    width: 10vh;
+    width: 8vh;
 }
 .page-shadow {
     box-shadow:0 0 0 10000px rgba(0,0,0,.50);
